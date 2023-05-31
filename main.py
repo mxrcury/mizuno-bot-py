@@ -1,8 +1,11 @@
 import logging
 import os
+from dotenv_vault import load_dotenv
 from dataclasses import dataclass
 from aiogram import Bot as TGBot, executor as dispatch_executor, types, Dispatcher
 from message_handler import message_handler
+
+load_dotenv()
 
 
 class Bot:
