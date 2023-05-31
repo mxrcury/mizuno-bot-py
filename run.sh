@@ -1,5 +1,5 @@
-set -a
-source ./.env
-set +a
+# set -a
+# source ./.env
+# set +a
 
 python3 main.py
