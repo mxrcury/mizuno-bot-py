@@ -17,7 +17,6 @@ class MessageHandler:
         if is_link:
             link = arguments[1]
             audio_title, audio_buffer = extract_audio(link)
-            print("AUDIO TITLE _ -> ", audio_title)
             await message.answer_audio(
                 title=audio_title,
                 audio=audio_buffer,

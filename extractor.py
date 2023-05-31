@@ -11,8 +11,6 @@ def extract_audio(video_url):
     youtube = pytube.YouTube(video_url)
     print(f"Downloading {youtube.title}...")
     audio_stream = youtube.streams.first()
-    # filter(only_audio=True)
-    # print("audio stream ->", audio_stream, "<- audio stream")
     audio_buffer = io.BytesIO()
     audio_stream.stream_to_buffer(audio_buffer)
     audio_buffer.seek(0)
