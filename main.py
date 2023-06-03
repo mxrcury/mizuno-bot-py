@@ -2,8 +2,10 @@ import logging
 import os
 from dotenv import load_dotenv
 from dataclasses import dataclass
+from dotenv import load_dotenv
 from aiogram import Bot as TGBot, executor as dispatch_executor, types, Dispatcher
 from message_handler import message_handler
+from scheduler import Scheduler
 
 load_dotenv()
 
@@ -17,12 +19,17 @@ class Bot:
         self.__start(executor)
 
     def __start(self, executor: dispatch_executor):
-        logging.basicConfig(level=logging.INFO)
-        self.token = os.getenv("TOKEN")
-        self.bot = TGBot(token=self.token)
+        self.set_configuration()
+        self.bot = TGBot(
+            token=self.token)
         self.dp = Dispatcher(self.bot)
         self.register_handlers()
-        executor.start_polling(self.dp)
+        executor.start_polling(self.dp, on_startup=Scheduler().__start_task())
+
+    def set_configuration(self):
+        load_dotenv()
+        logging.basicConfig(level=logging.INFO)
+        self.token = os.getenv("TOKEN")
 
     def register_handlers(self):
         self.dp.register_message_handler(
