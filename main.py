@@ -6,8 +6,6 @@ from dotenv import load_dotenv
 from aiogram import Bot as TGBot, executor as dispatch_executor, types, Dispatcher
 from message_handler import message_handler
 
-load_dotenv()
-
 
 class Bot:
     token: str
