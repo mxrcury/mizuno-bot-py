@@ -44,6 +44,11 @@ $ chmod +x install.sh
 
 ## Running the app
 
+With bash:
 ```bash
 $ run.sh
+```
+Native:
+```bash
+python3 main.py
 ```
