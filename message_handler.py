@@ -11,7 +11,6 @@ class MessageHandler:
 
     async def extract_audio(self, message: types.Message):
         arguments = message.text.split(' ')
-        link = ""
         is_link = arguments.__len__() > 1
 
         if is_link:

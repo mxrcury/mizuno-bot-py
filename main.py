@@ -5,7 +5,6 @@ from dataclasses import dataclass
 from dotenv import load_dotenv
 from aiogram import Bot as TGBot, executor as dispatch_executor, types, Dispatcher
 from message_handler import message_handler
-from scheduler import Scheduler
 
 load_dotenv()
 
@@ -24,7 +23,7 @@ class Bot:
             token=self.token)
         self.dp = Dispatcher(self.bot)
         self.register_handlers()
-        executor.start_polling(self.dp, on_startup=Scheduler().__start_task())
+        executor.start_polling(self.dp)
 
     def set_configuration(self):
         load_dotenv()
